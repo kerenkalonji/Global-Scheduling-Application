@@ -13,16 +13,16 @@ public class WelcomeController {
         this.translationService = translationService;
     }
 
-
+    // ✅ For console output (multithreaded messages + time zone)
     @GetMapping("/console-welcome")
     public String showConsoleWelcome() {
         translationService.displayWelcomeMessages();
-        return "Check IntelliJ console for messages.";
+        return "Check IntelliJ console for English, French, and time‑zone messages.";
     }
 
-
+    // ✅ For browser display (English + French + ET/MT/UTC)
     @GetMapping("/welcome")
     public String showWelcomeMessages() {
-        return translationService.getWelcomeMessages();
+        return translationService.getWelcomeMessagesWithTimes();
     }
 }

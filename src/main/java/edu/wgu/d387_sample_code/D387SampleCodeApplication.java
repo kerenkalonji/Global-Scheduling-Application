@@ -2,6 +2,7 @@ package edu.wgu.d387_sample_code;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.time.*;
 
 @SpringBootApplication
 public class D387SampleCodeApplication {
@@ -9,26 +10,24 @@ public class D387SampleCodeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(D387SampleCodeApplication.class, args);
 
-		// update today
+		// Updated for B3a & B3b rubric
 		displayPresentationTimes();
 	}
 
-	// update today
+	// Displays the time of an online live presentation in ET, MT, and UTC
 	public static void displayPresentationTimes() {
 
-		java.time.ZonedDateTime etTime =
-				java.time.ZonedDateTime.now(java.time.ZoneId.of("America/New_York"));
+		// Example: Presentation scheduled for 2:00 PM Eastern Time
+		LocalDateTime presentationTime = LocalDateTime.of(2026, 5, 5, 14, 0);
 
-		java.time.ZonedDateTime mtTime =
-				etTime.withZoneSameInstant(java.time.ZoneId.of("America/Denver"));
-
-		java.time.ZonedDateTime utcTime =
-				etTime.withZoneSameInstant(java.time.ZoneId.of("UTC"));
+		ZonedDateTime etTime = presentationTime.atZone(ZoneId.of("America/Toronto")); // ET
+		ZonedDateTime mtTime = etTime.withZoneSameInstant(ZoneId.of("America/Denver")); // MT
+		ZonedDateTime utcTime = etTime.withZoneSameInstant(ZoneId.of("UTC")); // UTC
 
 		java.time.format.DateTimeFormatter formatter =
 				java.time.format.DateTimeFormatter.ofPattern("HH:mm");
 
-		System.out.println("Live Presentation Times:");
+		System.out.println("Online Live Presentation Times:");
 		System.out.println("ET: " + etTime.format(formatter));
 		System.out.println("MT: " + mtTime.format(formatter));
 		System.out.println("UTC: " + utcTime.format(formatter));
