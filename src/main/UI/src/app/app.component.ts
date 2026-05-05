@@ -15,8 +15,8 @@ export class AppComponent implements OnInit{
 
   private baseURL:string='http://localhost:8080';
 
-  private getUrl:string = this.baseURL + '/room/reservation/v1/';
-  private postUrl:string = this.baseURL + '/room/reservation/v1';
+  private getUrl:string = this.baseURL + '/api/room/reservation/v1/';
+  private postUrl:string = this.baseURL + '/api/room/reservation/v1';
   public submitted!:boolean;
   roomsearch! : FormGroup;
   rooms! : Room[];
