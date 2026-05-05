@@ -1,18 +1,28 @@
 package edu.wgu.d387_sample_code.rest;
 
-import edu.wgu.d387_sample_code.WelcomeService;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import edu.wgu.d387_sample_code.service.TranslationService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
 public class WelcomeController {
 
-    private final WelcomeService service = new WelcomeService();
+    private final TranslationService translationService;
+
+    public WelcomeController(TranslationService translationService) {
+        this.translationService = translationService;
+    }
+
+
+    @GetMapping("/console-welcome")
+    public String showConsoleWelcome() {
+        translationService.displayWelcomeMessages();
+        return "Check IntelliJ console for messages.";
+    }
+
 
     @GetMapping("/welcome")
-    public List<String> getWelcome() throws InterruptedException {
-        return service.getMessages();
+    public String showWelcomeMessages() {
+        return translationService.getWelcomeMessages();
     }
 }
