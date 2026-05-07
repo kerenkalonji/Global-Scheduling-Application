@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
 
   welcomeMessages: string[] = [];
 
+  presentationTimes: string = '';
+
   reservationPrice: number = 150.00;
 
   rooms: any[] = [];
@@ -34,6 +36,11 @@ export class AppComponent implements OnInit {
     this.http.get<string[]>('http://localhost:8080/welcome')
       .subscribe(data => {
         this.welcomeMessages = data;
+      });
+
+    this.http.get('http://localhost:8080/presentation', { responseType: 'text' })
+      .subscribe(data => {
+        this.presentationTimes = data;
       });
 
   }
