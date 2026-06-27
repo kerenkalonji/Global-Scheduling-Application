@@ -17,7 +17,7 @@ A Java desktop application for managing global travel appointments. The applicat
 - Docker
 - Git
 - GitHub
-
+  
 ## Skills Demonstrated
 - Object-Oriented Programming
 - Desktop Application Development
